@@ -13,10 +13,12 @@ import {
 import storage from 'redux-persist/lib/storage'
 import {authApi} from "./api/authApi.ts";
 import userReducer from "./slices/userSlice.ts";
+import fileReducer from './slices/fileSlice.ts';
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
-    userState: userReducer
+    userState: userReducer,
+    fileState: fileReducer
 })
 
 const persistConfig = {
@@ -24,7 +26,8 @@ const persistConfig = {
     storage,
     blacklist: [
         authApi.reducerPath,
-        'user'
+        'user',
+        'file'
     ]
 }
 

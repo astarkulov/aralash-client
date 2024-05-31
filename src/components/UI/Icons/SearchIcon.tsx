@@ -1,5 +1,5 @@
 import cl from './Icons.module.scss'
-const Search = () => {
+const SearchIcon = () => {
     return (
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -9,4 +9,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default SearchIcon;

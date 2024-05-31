@@ -1,7 +1,7 @@
 import {IResume} from "../../models/IResume.ts";
 import {FC} from "react";
 import cl from './ResumeItem.module.scss'
-import ItemList from "./itemList/ItemList.tsx";
+import ItemList from "./ItemList/ItemList.tsx";
 
 interface ResumeItemProps {
     resume: IResume

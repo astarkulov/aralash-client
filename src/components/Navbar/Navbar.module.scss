@@ -2,6 +2,8 @@
 .navbar {
   height: 50px;
   background-color: rgba(0,242,255,0.5);
+  box-shadow: 0 0 5px gray;
+  margin-bottom: 10px;
   ul{
     display: flex;
     justify-content: space-between;
@@ -12,7 +14,7 @@
       margin: 2px 5px;
       padding: 5px 10px;
       background-color: teal;
-      border-radius: 20px;
+      border-radius: 3px;
       color: white;
     }
 

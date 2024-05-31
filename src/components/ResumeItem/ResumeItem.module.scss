@@ -4,7 +4,7 @@
   border: 1px solid black;
   border-radius: 30px;
   padding: 15px;
-  width: 700px;
+  width: 60%;
   h1{
     font-size: 25px;
     font-weight: 500;
@@ -16,5 +16,12 @@
     line-height: 1.2;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .resumeItem {
+    width: 99%;
+  }
+}
+
 
 

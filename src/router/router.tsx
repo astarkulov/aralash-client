@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register.tsx";
 import Login from "../pages/Login/Login.tsx";
 import Resumes from "../pages/Resumes/Resumes.tsx";
 import ResumeLoad from "../pages/ResumeLoad/ResumeLoad.tsx";
+import Processing from "../pages/Processing/Processing.tsx";
 
 export const router = createBrowserRouter([
         {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
                 {
                     path: '/resumeLoad',
                     element: <ResumeLoad/>
+                },
+                {
+                    path: '/processing',
+                    element: <Processing/>
                 }
             ]
         },

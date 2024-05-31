@@ -10,7 +10,6 @@ const ItemList: FC<ItemListProps> = ({items, title}) => {
     const [showMore, setShowMore] = useState(false);
     const itemsLength = items?.reduce((total, str) => total + str.length, 0);
     const indexShowMore = findIndexUntilTargetLength(items, 110);
-    console.log(itemsLength)
     return (
         <div className={cl.itemList}>
             <h3>{title}:</h3>
@@ -26,7 +25,7 @@ const ItemList: FC<ItemListProps> = ({items, title}) => {
                         : null
                 }
                 <button hidden={itemsLength < 50} className={cl.showMore}
-                        onClick={() => setShowMore(!showMore)}>{showMore ? 'Скрыть' : 'Еще...'}</button>
+                        onClick={() => setShowMore(!showMore)}>{showMore ? 'скрыть' : 'ещё...'}</button>
             </div>
         </div>
     );
@@ -34,7 +33,7 @@ const ItemList: FC<ItemListProps> = ({items, title}) => {
 
 export default ItemList;
 
-function findIndexUntilTargetLength(array, target) {
+function findIndexUntilTargetLength(array: string[], target: number) {
     let totalLength = 0;
 
     for (let i = 0; i < array.length; i++) {

@@ -6,7 +6,7 @@ function App() {
     return (
         <>
             <Navbar/>
-            <div style={{width: 960, margin: '0 auto'}}>
+            <div style={{maxWidth: 960, margin: '0 auto'}}>
                 <Outlet/>
             </div>
         </>

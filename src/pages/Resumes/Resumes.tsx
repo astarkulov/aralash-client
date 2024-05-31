@@ -5,6 +5,7 @@ import {useState} from "react";
 import SearchBar from "../../components/SearchBar/SearchBar.tsx";
 import {filterResumes} from "../../utils/filterResumes.ts";
 import {useNavigate} from "react-router-dom";
+import Button from "../../components/UI/Button/Button.tsx";
 
 const Resumes = () => {
     const [filter, setFilter] = useState('')
@@ -13,7 +14,7 @@ const Resumes = () => {
         <div className={cl.resumes}>
             <div className={cl.head}>
                 <SearchBar setFilter={setFilter}/>
-                <button onClick={() => navigate('/resumeLoad')}>Загрузить резюме</button>
+                <Button onClick={() => navigate('/resumeLoad')}>Загрузить резюме</Button>
             </div>
             {filterResumes(resumes, filter).map((resume, index) =>
                 <ResumeItem key={index} resume={resume}/>
