@@ -1,0 +1,22 @@
+
+.itemList {
+
+}
+
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  border: 1px solid #2a7100;
+  border-radius: 10px;
+  padding: 2px 8px;
+  margin: 5px;
+}
+
+.showMore {
+  font-size: 13px;
+  color: #007bff;
+  margin-left: 5px;
+}

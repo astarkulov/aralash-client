@@ -1,0 +1,18 @@
+@import 'src/shared/styles/style';
+
+.home {
+  margin-top: 20px;
+  @include flex-center;
+  flex-direction: column;
+  button{
+    background-color: teal;
+    height: 30px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: white;
+  }
+}

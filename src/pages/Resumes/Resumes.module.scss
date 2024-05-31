@@ -1,0 +1,23 @@
+@import "src/shared/styles/style";
+
+.resumes{
+  @include flex-center;
+  flex-direction: column;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 10px;
+    height: fit-content;
+  }
+}

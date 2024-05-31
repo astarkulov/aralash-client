@@ -1,0 +1,31 @@
+
+.navbar {
+  height: 50px;
+  background-color: rgba(0,242,255,0.5);
+  ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    height: 100%;
+    li{
+      margin: 2px 5px;
+      padding: 5px 10px;
+      background-color: teal;
+      border-radius: 20px;
+      color: white;
+    }
+
+    div {
+      display: flex;
+    }
+  }
+}
+
+.login {
+  background-color: #007bff;
+}
+
+.active {
+  filter: brightness(0.5) !important;
+}
