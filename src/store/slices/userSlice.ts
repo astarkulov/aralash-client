@@ -1,6 +1,7 @@
 import {createAppSlice} from "../createAppSlice.ts";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../models/IUser.ts";
+import {RootState} from "../store.ts";
 
 interface UserState {
     user: IUser,
@@ -38,3 +39,6 @@ export const {
     setUser,
     setAccessToken
 } = userSlice.actions;
+
+export const selectCurrentUser = (state: RootState) => state.userState
+

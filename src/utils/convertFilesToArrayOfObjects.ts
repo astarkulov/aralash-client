@@ -6,11 +6,12 @@ export const convertFilesToArrayOfObjects = (files: FileList): IFileObject[] => 
     for (const file of files) {
         const extension = getFileExtension(file.name);
 
-        // Создаем объект типа FileObject и добавляем в массив fileObjects
-        fileObjects.push({
-            file,
-            extension,
-        });
+        if(extension == 'pdf' || extension == 'docx' || extension == 'dpc' || extension == 'rtf') {
+            fileObjects.push({
+                file,
+                extension,
+            });
+        }
     }
 
     return fileObjects;

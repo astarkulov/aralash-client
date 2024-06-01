@@ -1,23 +1,38 @@
-import cl from './Navbar.module.scss'
-import {NavLink, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {NavLink, useNavigate} from 'react-router-dom';
+import cl from './Navbar.module.scss';
+import Burger from "./Burger/Burger.tsx";
+import {useAuth} from "../../hooks/useAuth.ts";
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const [activePage, setActivePage] = useState(1);
+
     return (
         <div className={cl.navbar}>
-            <ul>
-                <li>
-                    <NavLink
-                        to={'/resumes'}
-                        className={({isActive, isPending}) =>
-                            isPending ? "pending" : isActive ? "active" : ""
-                        }
-                    >
-                        Resumes
-                    </NavLink>
-                </li>
+            <ul className={cl.navLinks}>
+                <div>
+                    <li>
+                        <NavLink
+                            to={'/resumeLoad'}
+                        >
+                            Resume Load
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/template'}>
+                            Template
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/criterion'}>
+                            Criterion
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/processedResumes'}>
+                            ProcessedResumes
+                        </NavLink>
+                    </li>
+                </div>
                 <div>
                     <li className={cl.login} onClick={() => navigate('/login')}>
                         <NavLink
@@ -41,8 +56,11 @@ const Navbar = () => {
                     </li>
                 </div>
             </ul>
+            <div className={cl.hamburgerMenu}>
+                <Burger/>
+            </div>
         </div>
-    );
+    )
 };
 
 export default Navbar;

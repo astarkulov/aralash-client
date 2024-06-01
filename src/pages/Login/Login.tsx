@@ -3,6 +3,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import {useLoginMutation} from "../../store/api/authApi.ts";
+import Loader from "../../components/UI/Loader/Loader.tsx";
 
 const loginSchema = z
     .object({
@@ -27,18 +29,23 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const [login, {isLoading: loginLoading, reset: loginReset}] = useLoginMutation();
+
     // обработчик отправки формы
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
-        // просто выводим данные в консоль
-        console.log(data)
-        // сбрасываем состояние формы (очищаем поля)
+        login(data)
         reset()
+        loginReset()
     }
 
     useEffect(() => {
         // устанавливаем фокус на первое поле (имя пользователя) после монтирования компонента
         setFocus('username')
     }, [])
+
+    if(loginLoading){
+        return <Loader/>
+    }
 
     return (
         <section className='bg-gray-50'>

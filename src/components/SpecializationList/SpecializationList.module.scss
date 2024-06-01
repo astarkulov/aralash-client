@@ -1,0 +1,44 @@
+
+.specializations{
+
+  .newItem {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .items {
+  }
+
+  .itemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: space-evenly;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

@@ -14,9 +14,17 @@ import storage from 'redux-persist/lib/storage'
 import {authApi} from "./api/authApi.ts";
 import userReducer from "./slices/userSlice.ts";
 import fileReducer from './slices/fileSlice.ts';
+import {criterionApi} from "./api/criterionApi.ts";
+import {templateApi} from "./api/templateApi.ts";
+import {processedResumeApi} from "./api/processedResumeApi.ts";
+import {cvAnalyseApi} from "./api/cvAnalyseApi.ts";
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
+    [criterionApi.reducerPath]: criterionApi.reducer,
+    [templateApi.reducerPath]: templateApi.reducer,
+    [processedResumeApi.reducerPath]: processedResumeApi.reducer,
+    [cvAnalyseApi.reducerPath]: cvAnalyseApi.reducer,
     userState: userReducer,
     fileState: fileReducer
 })
@@ -26,7 +34,10 @@ const persistConfig = {
     storage,
     blacklist: [
         authApi.reducerPath,
-        'user',
+        criterionApi.reducerPath,
+        templateApi.reducerPath,
+        processedResumeApi.reducerPath,
+        cvAnalyseApi.reducerPath,
         'file'
     ]
 }
@@ -41,7 +52,11 @@ export const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }).concat([
-            authApi.middleware
+            authApi.middleware,
+            criterionApi.middleware,
+            templateApi.middleware,
+            processedResumeApi.middleware,
+            cvAnalyseApi.middleware
         ]),
 });
 export const persistor = persistStore(store);

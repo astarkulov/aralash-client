@@ -5,10 +5,8 @@ import {authResponse} from "../../models/response/authResponse";
 import {RootState} from "../store";
 import {HttpStatusCode} from "axios";
 
-const baseUrl = "https://localhost:5001/";
+const baseUrl = import.meta.env.VITE_API_URL;
 
-// Create a new mutex
-// create a new mutex
 const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({
     baseUrl,
@@ -17,7 +15,6 @@ const baseQuery = fetchBaseQuery({
         const token = (getState() as RootState).userState.accessToken
         if (token) {
             headers.set('authorization', `Bearer ${token}`)
-            headers.set("Content-Type", "application/json");
         }
 
         return headers
@@ -37,7 +34,7 @@ const customFetchBase: BaseQueryFn<
             const release = await mutex.acquire()
             try {
                 const refreshResult = await baseQuery(
-                    'Auth/refresh',
+                    'auth/refresh',
                     api,
                     extraOptions
                 )

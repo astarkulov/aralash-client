@@ -1,0 +1,30 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 2px;
+}
+
+.add{
+  display: flex;
+  button {
+    margin-left: 10px;
+  }
+}
+
+.templates {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.templateItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 5px;
+  input{
+    width: 80px;
+  }
+  p{
+    margin-right: 10px;
+  }
+}

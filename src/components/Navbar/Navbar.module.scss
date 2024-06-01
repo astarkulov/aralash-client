@@ -1,16 +1,17 @@
-
 .navbar {
   height: 50px;
-  background-color: rgba(0,242,255,0.5);
+  background-color: rgba(0, 242, 255, 0.5);
   box-shadow: 0 0 5px gray;
   margin-bottom: 10px;
-  ul{
+
+  .navLinks {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
     height: 100%;
-    li{
+
+    li {
       margin: 2px 5px;
       padding: 5px 10px;
       background-color: teal;
@@ -22,12 +23,25 @@
       display: flex;
     }
   }
-}
 
-.login {
-  background-color: #007bff;
-}
+  .hamburgerMenu {
+    display: none;
+  }
 
-.active {
-  filter: brightness(0.5) !important;
+  .login {
+    background-color: #007bff;
+  }
+
+  .active {
+    filter: brightness(0.5) !important;
+  }
+
+  @media (max-width: 768px) {
+    .navLinks {
+      display: none;
+    }
+    .hamburgerMenu {
+      display: block;
+    }
+  }
 }

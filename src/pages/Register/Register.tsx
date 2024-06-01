@@ -3,6 +3,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useEffect} from "react";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useNavigate} from "react-router-dom";
+import {useRegisterMutation} from "../../store/api/authApi.ts";
+import Loader from "../../components/UI/Loader/Loader.tsx";
 
 const formSchema = z
     .object({
@@ -11,8 +13,10 @@ const formSchema = z
             .min(2, {message: 'Имя пользователя слишком короткое'})
             .max(20, 'Имя пользователя слишком длинное')
             .transform((v) => v.toLowerCase().replace(/\s+/g, '_')),
-        email: z.string().email('Некорректный email'),
         password: z.string().min(6, 'Пароль слишком короткий'),
+        lastname: z.string(),
+        firstname: z.string(),
+        patronymic: z.string(),
         confirmPassword: z.string().min(6, 'Повторите пароль'),
         terms: z.literal(true, {
             errorMap: () => ({message: 'Примите условия использования'}),
@@ -34,13 +38,14 @@ const Register = () => {
         formState: {isDirty, isSubmitting, errors},
     } = useForm<FormSchema>({resolver: zodResolver(formSchema)})
 
+    const [registerUser, {isLoading: registerLoading, reset: registerReset}] = useRegisterMutation();
+
     const navigate = useNavigate()
 
     // обработчик отправки формы
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
-        // просто выводим данные в консоль
-        console.log(data)
-        // сбрасываем состояние формы (очищаем поля)
+        registerUser(data)
+        registerReset();
         reset()
     }
 
@@ -48,6 +53,10 @@ const Register = () => {
         // устанавливаем фокус на первое поле (имя пользователя) после монтирования компонента
         setFocus('username')
     }, [])
+
+    if(registerLoading) {
+        return <Loader/>
+    }
 
     return (
         <section className='bg-gray-50'>
@@ -75,20 +84,53 @@ const Register = () => {
                                 )}
                             </div>
                             <div>
-                                <label htmlFor='email' className='label'>
-                                    Адрес электронной почты *
+                                <label htmlFor='firstname' className='label'>
+                                    Имя
                                 </label>
                                 <input
-                                    {...register('email')}
-                                    type='email'
-                                    id='email'
+                                    {...register('firstname')}
+                                    type='firstname'
+                                    id='firstname'
                                     className='input'
-                                    placeholder='name@mail.com'
-                                    aria-invalid={errors.email ? 'true' : 'false'}
+                                    aria-invalid={errors.firstname ? 'true' : 'false'}
                                 />
-                                {errors.email && (
+                                {errors.firstname && (
                                     <span role='alert' className='error'>
-                    {errors.email?.message}
+                    {errors.firstname?.message}
+                  </span>
+                                )}
+                            </div>
+                            <div>
+                                <label htmlFor='lastname' className='label'>
+                                    Фамилия
+                                </label>
+                                <input
+                                    {...register('lastname')}
+                                    type='lastname'
+                                    id='lastname'
+                                    className='input'
+                                    aria-invalid={errors.lastname ? 'true' : 'false'}
+                                />
+                                {errors.lastname && (
+                                    <span role='alert' className='error'>
+                    {errors.lastname?.message}
+                  </span>
+                                )}
+                            </div>
+                            <div>
+                                <label htmlFor='patronymic' className='label'>
+                                    Отчество
+                                </label>
+                                <input
+                                    {...register('patronymic')}
+                                    type='patronymic'
+                                    id='patronymic'
+                                    className='input'
+                                    aria-invalid={errors.patronymic ? 'true' : 'false'}
+                                />
+                                {errors.patronymic && (
+                                    <span role='alert' className='error'>
+                    {errors.patronymic?.message}
                   </span>
                                 )}
                             </div>
